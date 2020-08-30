@@ -29,7 +29,7 @@ export async function processTrigger(
        return Promise.all(
     trigger.webRequestHandlerConfig.failedUris?.map(uri => {
       const formattedUri = mustacheFormatter.format(uri, fileName, trigger, predictions, true);
-      return callTriggerUri(fileName, trigger, failedUris);
+      return callTriggerUri(fileName, trigger, formattedUri);
       }),
     );
       
