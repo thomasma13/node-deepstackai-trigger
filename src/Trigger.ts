@@ -122,6 +122,7 @@ export default class Trigger {
     const triggeredPredictions = this.getTriggeredPredictions(fileName, predictions);
     if (!triggeredPredictions) {
       MqttManager.publishStatisticsMessage(TriggerManager.triggeredCount, TriggerManager.analyzedFilesCount);
+      WebRequestHandler.processTrigger(fileName, this, triggeredPredictions);
       return;
     }
 
