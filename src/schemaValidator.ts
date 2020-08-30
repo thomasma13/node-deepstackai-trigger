@@ -82,7 +82,7 @@ export default async function validateJsonAgainstSchema(
   );
   validator.addSchema(
     webRequestHandlerConfig,
-    "https://raw.githubusercontent.com/danecreekphotography/node-blueiris-deepstack-ai/main/src/schemas/webRequestHandlerConfig.schema.json",
+    "https://raw.githubusercontent.com/thomasma13/node-blueiris-deepstack-ai/main/src/schemas/webRequestHandlerConfig.schema.json",
   );
 
   const isValid = await validator.validate(schemaFileName, jsonObject);
