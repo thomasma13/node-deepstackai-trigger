@@ -5,6 +5,7 @@
 export default class WebRequestConfig {
   public triggerUris: string[];
   public enabled: boolean;
+  public failedUris: string[];
 
   constructor(init?: Partial<WebRequestConfig>) {
     Object.assign(this, init);
