@@ -23,6 +23,17 @@ export async function processTrigger(
   if (!trigger?.webRequestHandlerConfig?.enabled) {
     return [];
   }
+  
+  //call failurl if predictions empty
+  if (!predictions) {
+       return Promise.all(
+    trigger.webRequestHandlerConfig.failedUris?.map(uri => {
+      const formattedUri = mustacheFormatter.format(uri, fileName, trigger, predictions, true);
+      return callTriggerUri(fileName, trigger, failedUris);
+      }),
+    );
+      
+  }
 
   return Promise.all(
     trigger.webRequestHandlerConfig.triggerUris?.map(uri => {
