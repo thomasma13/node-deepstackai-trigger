@@ -16,6 +16,15 @@
       "minItems": 1,
       "uniqueItems": true
     },
+    "failedUris": {
+      "description": "A list of URIs to call when the trigger is activated.",
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1,
+      "uniqueItems": true
+    },
     "enabled": {
       "description": "Enables the web request handler on this trigger. Default is true.",
       "type": "boolean",
