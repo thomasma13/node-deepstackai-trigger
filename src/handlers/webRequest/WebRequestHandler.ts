@@ -24,7 +24,7 @@ export async function processTrigger(
     return [];
   }
   log.error("WebRequestHandler", "test1");
-  //log.error("WebRequestHandler", trigger.webRequestHandlerConfig.failedUris);
+  log.error("WebRequestHandler", trigger.webRequestHandlerConfig.triggerUris);
   log.error("WebRequestHandler", "test1a");
       
   //call failurl if predictions empty
