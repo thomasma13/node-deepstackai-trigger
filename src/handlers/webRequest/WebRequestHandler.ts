@@ -30,12 +30,12 @@ export async function processTrigger(
   //call failurl if predictions empty
   if (!predictions) {
        return Promise.all(
-    trigger.webRequestHandlerConfig.triggerUris?.map(uri => {
-      const formattedUri = mustacheFormatter.format(uri, fileName, trigger, predictions, true);
-      return callTriggerUri(fileName, trigger, formattedUri);
-      }),
-    );
-      
+    //trigger.webRequestHandlerConfig.triggerUris?.map(uri => {
+      //const formattedUri = mustacheFormatter.format(uri, fileName, trigger, predictions, true);
+      //return callTriggerUri(fileName, trigger, formattedUri);
+      //}
+      return callTriggerUri(fileName, trigger, trigger.webRequestHandlerConfig.failedUris);
+     );    
   }
 log.error("WebRequestHandler", "test2");
   return Promise.all(
