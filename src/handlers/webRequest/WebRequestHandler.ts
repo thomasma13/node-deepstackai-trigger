@@ -34,7 +34,8 @@ export async function processTrigger(
       //const formattedUri = mustacheFormatter.format(uri, fileName, trigger, predictions, true);
       //return callTriggerUri(fileName, trigger, formattedUri);
       //}
-      return callTriggerUri(fileName, trigger, trigger.webRequestHandlerConfig.failedUris);
+      callTriggerUri(fileName, trigger, trigger.webRequestHandlerConfig.failedUris);
+      return;
      //);    
   }
 log.error("WebRequestHandler", "test2");
