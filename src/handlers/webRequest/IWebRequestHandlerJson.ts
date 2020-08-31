@@ -4,5 +4,5 @@
  *--------------------------------------------------------------------------------------------*/
 export default interface IWebRequestHandlerJson {
   triggerUris: string[];
-  failedUris: string[];
+  failedUris: string;
 }
