@@ -111,14 +111,14 @@ export default class Trigger {
     if (!(await this.passesDateTest(fileName))) return;
 
     this._lastTriggerTime = new Date();
-
+log.error("trigger", "test1");
     // Get the predictions, if any.
     const predictions = await this.analyzeImage(fileName);
     if (!predictions) {
       WebRequestHandler.processTrigger(fileName, this, null);
       return;
     }
-
+log.error("trigger", "test2");
     // Check to see if any predictions cause this to activate.
     const triggeredPredictions = this.getTriggeredPredictions(fileName, predictions);
     if (!triggeredPredictions) {
@@ -126,7 +126,7 @@ export default class Trigger {
       WebRequestHandler.processTrigger(fileName, this, null);
       return;
     }
-
+log.error("trigger", "test3");
     // At this point a prediction matched so increment the count.
     TriggerManager.incrementTriggeredCount();
     this.triggeredCount += 1;
