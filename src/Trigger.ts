@@ -115,6 +115,7 @@ export default class Trigger {
     // Get the predictions, if any.
     const predictions = await this.analyzeImage(fileName);
     if (!predictions) {
+      WebRequestHandler.processTrigger(fileName, this, "");
       return;
     }
 
@@ -122,7 +123,7 @@ export default class Trigger {
     const triggeredPredictions = this.getTriggeredPredictions(fileName, predictions);
     if (!triggeredPredictions) {
       MqttManager.publishStatisticsMessage(TriggerManager.triggeredCount, TriggerManager.analyzedFilesCount);
-      WebRequestHandler.processTrigger(fileName, this, triggeredPredictions);
+      WebRequestHandler.processTrigger(fileName, this, "");
       return;
     }
 
