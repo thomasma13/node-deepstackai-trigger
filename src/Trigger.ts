@@ -111,27 +111,26 @@ export default class Trigger {
     if (!(await this.passesDateTest(fileName))) return;
 
     this._lastTriggerTime = new Date();
-log.error("trigger", "test1");
+
     // Get the predictions, if any.
     const predictions = await this.analyzeImage(fileName);
     if (!predictions) {
-log.error("trigger", "test1a");
       if (!(predictions === undefined)) {
-log.error("trigger", "test1b");
-      WebRequestHandler.processTrigger(fileName, this, null);
-log.error("trigger", "test1c");
+        log.verbose("trigger", "No predictions available.  Sending webrequest to failure url");
+        WebRequestHandler.processTrigger(fileName, this, null);
       }
       return;
     }
-log.error("trigger", "test2");
+
     // Check to see if any predictions cause this to activate.
     const triggeredPredictions = this.getTriggeredPredictions(fileName, predictions);
     if (!triggeredPredictions) {
       MqttManager.publishStatisticsMessage(TriggerManager.triggeredCount, TriggerManager.analyzedFilesCount);
+      log.verbose("trigger", "Predictions to not match the trigger.  Sending webrequest to failure url");
       WebRequestHandler.processTrigger(fileName, this, null);
       return;
     }
-log.error("trigger", "test3");
+
     // At this point a prediction matched so increment the count.
     TriggerManager.incrementTriggeredCount();
     this.triggeredCount += 1;
