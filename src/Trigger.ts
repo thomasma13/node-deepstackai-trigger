@@ -116,7 +116,7 @@ log.error("trigger", "test1");
     const predictions = await this.analyzeImage(fileName);
     if (!predictions) {
 log.error("trigger", "test1a");
-      if !(predictions === undefined) {
+      if (!(predictions === undefined)) {
 log.error("trigger", "test1b");
       WebRequestHandler.processTrigger(fileName, this, null);
 log.error("trigger", "test1c");
