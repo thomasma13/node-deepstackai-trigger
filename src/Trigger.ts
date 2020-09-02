@@ -115,7 +115,7 @@ export default class Trigger {
     // Get the predictions, if any.
     const predictions = await this.analyzeImage(fileName);
     if (!predictions) {
-      if (!(predictions === undefined)) {
+      if (predictions === undefined) {
         log.verbose("trigger", "No predictions available.  Sending webrequest to failure url");
         WebRequestHandler.processTrigger(fileName, this, null);
       }
